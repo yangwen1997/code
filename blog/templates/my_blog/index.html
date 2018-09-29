@@ -1,0 +1,73 @@
+{% extends 'my_blog/base.html' %}
+{% block title %}博客首页{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="co-md-9" >
+        <!--
+        把需要展示的那一页的数据进行展示
+        entry:是用户需要获取的那页的数据 从views传递过来
+        -->
+            {% for entry in entrys %}
+                <h2><a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a></h2><br>
+                {% if entry.img %}
+                <img src="{{ entry.img.url}}" width="28%" height="300px"><br>
+                {% endif %}
+                <p >
+                    <span ><h3>摘要</h3></span>
+                    <br>
+                    <span style="font-size: 20px; background-color: #ebcccc">{{ entry.abstract }}</span>
+                </p>
+                <p >
+                    <span><h3>正文</h3></span>
+                    <br>
+                  <span style="font-size: 15px;background-color:lavender">{{ entry.body }}</span>
+                </p>
+                <p>
+                    <span style="font-size: 25px; background-color:#f7e1b5">作者{{ entry.author }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="font-size: 25px; background-color: aqua">发布时间：{{ entry.created_time }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="font-size: 25px; background-color:chartreuse">人气：{{ entry.visiting }}</span>
+                </p>
+               {% endfor %}
+                 <div class="col-md-3">
+                {% include 'my_blog/right_side_bar.html' %}
+            </div>
+        </div>
+    </div>
+  <nav aria-label="Page navigation" style="margin-left: 500px">
+  <ul class="pagination  pagination-lg">
+  <!-- 实现上一页跳转
+    如果有上一页点击跳转到上一页
+    entry:后台传递过来是那一页的数据
+    entry.next_page_number:实现跳转到当前页的上一页
+-->
+  {% if entrys.has_previous %}
+   <li>
+      <a href="/app/{{ entrys.previous_page_number }}" aria-label="Previous">
+        <span aria-hidden="true">上一页</span>
+      </a>
+    </li>
+  {% endif %}
+     <!--
+     实现分页条的展示把分为多少页的页码进行展示
+      -->
+      {% for index in paginator.page_range %}
+       <li><a href="{% url 'app:base' index %}">{{ index }}</a></li>
+      {% endfor %}
+<!-- 实现下一页跳转
+    如果有下一页点击跳转到下一页
+    entry:后台传递过来是那一页的数据
+    entry.next_page_number:实现跳转到当前页的下一页
+-->
+  {% if entrys.has_next %}
+    <li>
+      <a href="/app/{{ entrys.next_page_number }}" aria-label="Next">
+        <span aria-hidden="true">下一页
+        </span>
+      </a>
+    </li>
+  {% endif %}
+  </ul>
+</nav>
+{% endblock %}

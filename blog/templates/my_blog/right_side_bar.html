@@ -1,0 +1,80 @@
+{% load blog_tags %}
+{% block toc %}
+
+{% endblock %}
+{#右边标签创建的最新博客展示#}
+<div class="row">
+    <div class="widget">
+
+        <h3>最新博客</h3>
+        {% get_recent_entries as recent_entry_list %}
+
+        {% for entry in recent_entry_list %}
+            <div>
+                <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                <div>{{ entry.author }}   发表于：{{ entry.created_time|date:"Y年m月d日" }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{#展示推荐的博客#}
+<div class="row">
+    <div class="widget">
+        <h3>推荐博客</h3>
+        <!--
+      get_popular_entries as popular_entry_list;从加载过来的标签方法中获取到popular_entry_list
+      popular_entry_list可以随便写
+      把数据展示并在index（主页）和detail(详情页)进行展示
+      使用
+{#      {% include 模板目录（路径，HTML网页） %}#}
+        -->
+        {% get_popular_entries as popular_entry_list %}
+
+        {% for entry in popular_entry_list %}
+            <div>
+                <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+                <span class="badge" style="color: white;background-color: darkgreen">{{ entry.visiting }}</span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{#文件进行归档#}
+<div class="row">
+    <div class="widget">
+        <h3>归档:</h3>
+        {% archives as a %}
+        {% for foo in a %}
+            <li class="list-group-item">
+            <a href="{% url 'app:blog_archives' foo.year foo.month %}">
+                <i class="glyphicon glyphicon-chevron-right"></i>
+                 {{ foo.year }} 年 {{ foo.month }} 月
+                <span class="badge"></span>
+            </a>
+            </li>
+        {% endfor %}
+
+    </div>
+</div>
+
+{#标签云展示#}
+<div class="row">
+    <div class="widget" >
+        <h3>标签云:</h3>
+        {% get_tags as tag_list %}
+        {% for tag in tag_list %}
+                <a href="{% url 'app:blog_tags' tag.id %}" style="font-size: 20px;">
+                    <span style="padding: 5px;" class="label {% cycle 'label-default' 'label-primary' 'label-success' 'label-info' 'label-warning' 'label-danger' %}">{{ tag.name }}</span>
+                </a>&nbsp;
+        {% endfor %}
+    </div>
+</div>
+
+{# 订阅 #}
+<div class="row">
+    <div class="rss">
+        <a href="/sub/feed/"><i class="glyphicon glyphicon-plus"></i>RSS 订阅</a>
+    </div>
+</div>

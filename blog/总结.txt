@@ -1,0 +1,24 @@
+修改url，添加静态文件的url规则
+	urlpatterns = patterns('',
+    # Examples:
+    # url(r'^$', 'catyblog.views.home', name='home'),
+
+    url(r'^blog/', include('blog.urls')),
+    url(r'^admin/', include(admin.site.urls)),
+)  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+修改settings.py，添加MEDIA_URL, MEDIA_ROOT
+	MEDIA_URL = '/media/'
+	MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+如此以来，便可在css文件或者html文件中直接以这样的方式使用静态文件
+
+	background-image: url('/media/img/bg.jpg');
+
+
+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) 只有在debug模式下才有作用．
+
+它的功能只是实现了从url规则到文件系统的映射
+
+
+在网页中调用图片{{类.字段.url }} ({{ entry.img.url }})
+因为不是在数据库中存入的图片所以后面调用的是url,而不是jpg因为没有存在数据库中而是在media目录下
