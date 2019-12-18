@@ -4,12 +4,7 @@ import logging
 import pymysql
 import pymongo
 import redis
-DB = pymongo.MongoClient("mongodb://rwuser:48bb67d7996f327b@10.2.1.216:57017,10.2.1.217:57017,10.2.1.218:57017")
-#
-# # 企业数据库 公司唯一标识表  号码唯一标识表 数据总表
-# com_company_md = DB['BMD']["qcc_table"]
-# com_phone_md =  DB['BMD']["qcc_new"]
-# com_reserve = DB['BMD']["Reserve_total"]
+
 
 #个人数据库
 
