@@ -12,6 +12,8 @@ def create_app():
     # 初始化配置，配置的一些数据库这里咱不配置
     app.config.from_object(BaseConfig)
     app.config['UPLOAD_FOLDER'] = r'./files'
+    app.debug = True
+
     # 配置扩展,暂无配置
 
     # 注册蓝本

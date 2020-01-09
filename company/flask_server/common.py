@@ -4,7 +4,12 @@ import logging
 import pymysql
 import pymongo
 import redis
-
+DB = pymongo.MongoClient("mongodb://rwuser:48bb67d7996f327b@10.2.1.216:57017,10.2.1.217:57017,10.2.1.218:57017")
+#
+# # 企业数据库 公司唯一标识表  号码唯一标识表 数据总表
+# com_company_md = DB['BMD']["qcc_table"]
+# com_phone_md =  DB['BMD']["qcc_new"]
+# com_reserve = DB['BMD']["Reserve_total"]
 
 #个人数据库
 
@@ -52,7 +57,7 @@ DBB = pymongo.MongoClient(host="127.0.0.1",port=27017)
 # com_company_md = DB['BMD']["qcc_table"]
 # com_phone_md =  DB['BMD']["qcc_new"]
 com_reserve = DBB['BMD']["Reserve_total"]
-
+target_db = DBB['BMD']["push_test"]
 
 #公共表 推送状态查询表 号码状态查询表 未检测号码表
 Online_total = DBB['BMD']["Online_total"]
@@ -62,5 +67,6 @@ DATA_result = DBB['BMD']["result"]
 Spider_table = DBB['BMD']['spider_table']
 qcc_new = DBB['BMD']['qcc_new']
 
+sendID = DBB["BMD"]["SendId"]
 # redis 缓存库 未检测表数据
 RED_CLI = redis.Redis(host="127.0.0.1",port=6379,db=6)

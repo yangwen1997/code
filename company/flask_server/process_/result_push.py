@@ -1,5 +1,5 @@
 import hashlib
-from common import com_reserve,DATA_result
+from common import com_reserve,DATA_result,target_db
 import urllib
 import re
 
@@ -50,8 +50,29 @@ class Data_push(object):
             sucess_data["companyName"] = data["companyName"]
             sucess_data["companyTel"] = data["companyTel"]
             sucess_data["outName"] = ""
-            sucess_data["companyCity"] = data["companyCity"]
-            sucess_data["companyProvince"] = data["companyProvince"]
+
+            # 省份进行判断,市进行判断
+            if re.search("北京",data["companyProvince"]) :
+                sucess_data["companyCity"] = "北京"
+                sucess_data["companyProvince"] = "北京市"
+            elif re.search("重庆",data["companyProvince"]):
+                sucess_data["companyCity"] = "重庆"
+                sucess_data["companyProvince"] = "重庆市"
+            elif re.search("上海",data["companyProvince"]):
+                sucess_data["companyCity"] = "上海"
+                sucess_data["companyProvince"] = "上海市"
+            else:
+                if data["companyProvince"]:
+                    if re.search("省",data["companyProvince"]):
+                        sucess_data["companyProvince"] = data["companyProvince"]
+                    else:
+                        sucess_data["companyProvince"] = data["companyProvince"] + "省"
+                if data["companyCity"]:
+                    if re.search("市",data["companyCity"]):
+                        sucess_data["companyCity"] = data["companyCity"].replace("市","")
+                    else:
+                        sucess_data["companyCity"] = data["companyCity"]
+
             sucess_data["companyAddr"] = data["registerAddress"]
             sucess_data["name"] = liquid_name
             sucess_data["code"] = code_name
@@ -60,14 +81,20 @@ class Data_push(object):
             sucess_data["resourceRemark"] = "城市：{},法人：{},注册时间：{}，注册资本：{}，经营范围：{}".format(data["companyCity"],
                                                                                          data["legalMan"],data["registerTime"],
                                                                                          data["registerMoney"],data["businessScope"])
-            sucess_data["ibossNum"] = None,
-            sucess_data["orgId"] = None,
-            sucess_data["deptId"] = None,
-            sucess_data["centreId"] = None,
+            sucess_data.update({
+                "ibossNum": None,
+                "orgId": None,
+                "deptId": None,
+                "centreId": None,
+            })
             sucess_data["isDir"] = 0
+            sucess_data["isShare"] = 0
 
+            #推送至目标库后修改数据的push值回写到数据总表
+            target_db.save(sucess_data)
             data["push"] = "2"
             com_reserve.update({"_id":data["_id"]},data)
+
             return sucess_data
         except Exception as e:
             current_app.logger.info(e)
@@ -141,7 +168,7 @@ class Data_push(object):
             dict_result["SucessResult"] = sucess_lt
             dict_result["msg"] = "数据补充{}条".format((count - sucess_count))
             if sucess_count > 0:
-                dict_result["err_num"] = "数据剩余{}条未推送，暂时没有该液态的资源数据".format(sucess_count)
+                dict_result["Not_push_msg"] = "数据剩余{}条未推送，暂时没有该液态的资源数据".format(sucess_count)
 
         return dict_result
 
@@ -166,7 +193,7 @@ class Data_push(object):
                 # 2.如果mark为该液态的数据直接存在时
                 dict_result["SucessResult"] = sucess_lt
                 dict_result["msg"] = "数据补充{}条".format((count - sucess_count))
-                dict_result["err_num"] = "数据剩余{}条未推送".format(sucess_count)
+                dict_result["Not_push_msg"] = "数据剩余{}条未推送".format(sucess_count)
             else:
                 # 3.如果mark为该液态的数据不够推送的数据时
                 result_num = com_reserve.find({"push": "0", "tel_check": "实号"})
@@ -386,7 +413,7 @@ class Data_push(object):
                 dict_result["SucessResult"] = sucesslt
                 dict_result["msg"] = "数据补充{}条".format((count - sucess_count))
                 if sucess_count > 0:
-                    dict_result["err_num"] = "数据剩余{}条未推送，暂时没有该液态的资源数据".format(sucess_count)
+                    dict_result["Not_push_msg"] = "数据剩余{}条未推送，暂时没有该液态的资源数据".format(sucess_count)
                 return dict_result
 
             # 根据判断规则取出对应的数据，并切把不足的数据

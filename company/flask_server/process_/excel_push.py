@@ -30,108 +30,114 @@ def read_excel(user_id,trade):
     m = 0
     n = 0
     s = 0
-
+    lt = []
     for file in file_lt:
-        file_path = files + r'\{}'.format(file)
-        workbook = xlrd.open_workbook(file_path)
-        mark = str(trade)
-        # 获取所有sheet
-        sheet_name = workbook.sheet_names()[0]
-        # 根据sheet索引或者名称获取sheet内容
-        sheet = workbook.sheet_by_index(0)  # sheet索引从0开始
+        if file == "TEL":
+            pass
+        else:
+            file_path = files + r'\{}'.format(file)
+            workbook = xlrd.open_workbook(file_path)
+            mark = str(trade)
+            # 获取所有sheet
+            sheet_name = workbook.sheet_names()[0]
+            # 根据sheet索引或者名称获取sheet内容
+            sheet = workbook.sheet_by_index(0)  # sheet索引从0开始
 
-        a = 2
-        while True:
-            try:
-                rows = sheet.row_values(a)
-                # print(rows)
-            except Exception as e:
-                print(e)
-                break
-            else:
-                if len(rows) == 0:
+            a = 1
+            while True:
+                try:
+                    rows = sheet.row_values(a)
+                    # print(rows)
+                except Exception as e:
+                    print(e)
                     break
                 else:
-                    companyName = rows[0]
-                    businessState = rows[1]
-                    legalMan = rows[2]
-                    registerMoney = rows[3]
-                    reg_time = rows[4]
-                    if re.search('-',reg_time):
-                        registerTime = rows[4]
+                    if len(rows) == 0:
+                        break
                     else:
-                        registerTime == str(datetime.datetime(*xlrd.xldate_as_tuple(rows[4], 0))).replace(' 00:00:00', '')
-                    companyProvince = rows[5]
-                    companyCity = rows[6]
-                    companyTel = rows[7]
-                    imTel = rows[8]
-                    email = rows[9]
-                    tynum = rows[10]
-                    nsnum = rows[11]
-                    zch = rows[12]
-                    zznum = rows[13]
-                    cbrs = rows[14]
-                    companyType = rows[15]
-                    industry = rows[16]
-                    web = rows[17]
-                    registerAddress = rows[18]
-                    businessScope = rows[19]
+                        companyName = rows[0]
+                        businessState = rows[1]
+                        legalMan = rows[2]
+                        registerMoney = rows[3]
+                        reg_time = rows[4]
+                        if type(rows[4]) == str:
+                            registerTime = rows[4]
+                        else:
+                            registerTime == str(datetime.datetime(*xlrd.xldate_as_tuple(rows[4], 0))).replace(' 00:00:00', '')
+                        companyProvince = rows[5]
+                        companyCity = rows[6]
+                        companyTel = str(rows[7]).replace(".0","")
+                        imTel = rows[8]
+                        email = rows[9]
+                        tynum = str(rows[10]).replace(".0","")
+                        nsnum = str(rows[11]).replace(".0", "")
+                        zch = str(rows[12]).replace(".0", "")
+                        zznum = str(rows[13]).replace(".0", "")
+                        cbrs = rows[14]
+                        companyType = rows[15]
+                        industry = rows[16]
+                        web = rows[17]
+                        registerAddress = rows[18]
+                        businessScope = rows[19]
 
-                    id = hashlib.md5(companyName.encode(encoding='utf-8')).hexdigest()
+                        id = hashlib.md5(companyName.encode(encoding='utf-8')).hexdigest()
 
-                    data = {
-                        '_id': id,
-                        'companyName': companyName,
-                        'businessState': businessState,
-                        'legalMan': legalMan,
-                        'registerMoney': registerMoney,
-                        'registerTime': registerTime,
-                        'companyProvince': companyProvince,
-                        'companyCity': companyCity,
-                        'companyTel': companyTel,
-                        'imTel': imTel,
-                        'email': email,
-                        'tynum': tynum,
-                        'nsnum': nsnum,
-                        'zch': zch,
-                        'zznum': zznum,
-                        'cbrs': cbrs,
-                        'companyType': companyType,
-                        'industry': industry,
-                        'web': web,
-                        'registerAddress': registerAddress,
-                        'businessScope': businessScope,
-                        'mark': mark
-                    }
-                    try:
-                        # 存入成功的数据 data
-                        Spider_table.insert(data)
-                        m += 1
-                        s += 1
-                        a += 1
-                    except :
-                        # 失败的数据 data
-                        s += 1
-                        n += 1
-                        a += 1
+                        data = {
+                            '_id': id,
+                            'companyName': companyName,
+                            'businessState': businessState,
+                            'legalMan': legalMan,
+                            'registerMoney': registerMoney,
+                            'registerTime': registerTime,
+                            'companyProvince': companyProvince,
+                            'companyCity': companyCity,
+                            'companyTel': companyTel,
+                            'imTel': imTel,
+                            'email': email,
+                            'tynum': tynum,
+                            'nsnum': nsnum,
+                            'zch': zch,
+                            'zznum': zznum,
+                            'cbrs': cbrs,
+                            'companyType': companyType,
+                            'industry': industry,
+                            'web': web,
+                            'registerAddress': registerAddress,
+                            'businessScope': businessScope,
+                            'mark': mark
+                        }
+                        try:
+                            # 存入成功的数据 data
+                            Spider_table.insert(data)
+                            m += 1
+                            s += 1
+                            a += 1
+                            lt.append(data)
+                        except :
+                            # 失败的数据 data
+                            s += 1
+                            n += 1
+                            a += 1
 
     for file in file_lt:
-        file_path = files + r'\{}'.format(file)
-        os.remove(file_path)
+        if file != "TEL":
+            file_path = files + r'\{}'.format(file)
+            os.remove(file_path)
 
     # a: 总数， m：插入成功 n:失败
     current_app.logger.info(f'合计：上传数据总数{s}, 新上传数据m:{m}, 已有数据n:{n}')
 
-    return s,m,n
+    return s,m,n,lt
 
 
-def tel_handler():
+def tel_handler(data):
     """
     对公司的手机号去重存入数据库
     :return:
     """
     sucuess_count = 0
-    result = Spider_table.find({'flag':{"$exists":False}})
+    # result = Spider_table.find({'flag':{"$exists":False}})
+    result = data
     for i in result:
         old_id = i['_id']
         tel = []

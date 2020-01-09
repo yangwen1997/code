@@ -1,1 +1,121 @@
 2019-12-18 15:48:38,114 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5000, 新上传数据m:3423, 已有数据n:1577
+2019-12-18 18:18:38,311 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5000, 新上传数据m:5000, 已有数据n:0
+2019-12-18 18:20:00,191 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3261, 新上传数据m:2365, 已有数据n:896
+2019-12-18 18:20:57,877 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3261, 新上传数据m:0, 已有数据n:3261
+2019-12-18 18:21:12,447 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3261, 新上传数据m:0, 已有数据n:3261
+2019-12-18 18:47:32,008 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3261, 新上传数据m:0, 已有数据n:3261
+2019-12-18 18:51:40,322 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3261, 新上传数据m:0, 已有数据n:3261
+2019-12-19 09:10:28,597 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数4532, 新上传数据m:4531, 已有数据n:1
+2019-12-19 09:20:16,948 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数4532, 新上传数据m:0, 已有数据n:4532
+2019-12-19 09:32:10,905 - INFO - api.py - file_update - 130 - Unsupported format, or corrupt file: Expected BOF record; found b'\x89PNG\r\n\x1a\n'
+2019-12-19 09:40:31,884 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数0, 新上传数据m:0, 已有数据n:0
+2019-12-19 09:52:37,680 - INFO - api.py - file_update - 130 - type object 'datetime.datetime' has no attribute 'datetime'
+2019-12-19 10:04:50,424 - INFO - api.py - file_update - 130 - local variable 'registerTime' referenced before assignment
+2019-12-19 10:07:14,726 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数999, 新上传数据m:0, 已有数据n:999
+2019-12-19 10:09:54,521 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数999, 新上传数据m:999, 已有数据n:0
+2019-12-19 14:17:31,008 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数999, 新上传数据m:0, 已有数据n:999
+2019-12-19 14:17:51,394 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数999, 新上传数据m:0, 已有数据n:999
+2019-12-19 18:47:49,745 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数10002, 新上传数据m:9987, 已有数据n:15
+2019-12-20 16:42:58,485 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 11:57:40,177 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 14:13:35,706 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 14:46:41,377 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 14:51:07,562 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 14:57:16,828 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 14:59:31,371 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:18:12,198 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:21:25,587 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:24:06,843 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:28:01,574 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:40:22,488 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:43:35,349 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:44:40,722 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:45:06,698 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 15:58:40,771 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 16:03:09,388 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 16:05:36,091 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 16:06:44,560 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 16:19:01,049 - INFO - api.py - file_update - 140 - File size is 0 bytes
+2019-12-23 17:24:31,136 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-23 19:17:09,837 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-24 10:19:32,526 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-24 10:20:57,388 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-24 10:22:03,338 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-24 10:25:16,521 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-24 10:28:40,129 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3964, 新上传数据m:3963, 已有数据n:1
+2019-12-24 13:50:23,115 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数4637, 新上传数据m:4636, 已有数据n:1
+2019-12-24 13:51:51,165 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数4637, 新上传数据m:0, 已有数据n:4637
+2019-12-24 15:10:21,674 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3170, 新上传数据m:2245, 已有数据n:925
+2019-12-24 15:10:30,412 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数4637, 新上传数据m:0, 已有数据n:4637
+2019-12-24 15:11:15,492 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3170, 新上传数据m:0, 已有数据n:3170
+2019-12-24 15:13:40,467 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数5000, 新上传数据m:5000, 已有数据n:0
+2019-12-24 15:21:39,758 - INFO - excel_push.py - read_excel - 123 - 合计：上传数据总数3457, 新上传数据m:1325, 已有数据n:2132
+2019-12-24 15:33:49,114 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:5000, 已有数据n:1
+2019-12-24 15:41:00,833 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4150, 新上传数据m:4149, 已有数据n:1
+2019-12-24 15:43:05,061 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4150, 新上传数据m:0, 已有数据n:4150
+2019-12-24 15:44:22,281 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:5000, 已有数据n:1
+2019-12-24 17:24:26,092 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5000, 新上传数据m:0, 已有数据n:5000
+2019-12-25 16:44:08,046 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:5001, 已有数据n:0
+2019-12-25 16:45:15,565 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:5001, 已有数据n:0
+2019-12-25 16:50:11,703 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:5000, 已有数据n:1
+2019-12-25 17:07:48,120 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5017, 新上传数据m:4976, 已有数据n:41
+2019-12-25 17:08:55,867 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5017, 新上传数据m:0, 已有数据n:5017
+2019-12-25 17:09:19,905 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5017, 新上传数据m:0, 已有数据n:5017
+2019-12-25 18:40:14,921 - INFO - api.py - file_update - 140 - No module named 'company'
+2019-12-25 18:41:18,503 - INFO - api.py - file_update - 140 - No module named 'company'
+2019-12-25 18:43:35,245 - INFO - api.py - file_update - 140 - No module named 'company'
+2019-12-25 18:44:51,859 - INFO - api.py - file_update - 140 - No module named 'company'
+2019-12-25 18:45:14,668 - INFO - api.py - file_update - 140 - No module named 'company'
+2019-12-25 18:47:28,435 - INFO - api.py - file_update - 140 - No module named 'company'
+2019-12-25 18:47:57,001 - INFO - api.py - file_update - 140 - No module named 'company'
+2019-12-25 18:50:15,231 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数15003, 新上传数据m:10000, 已有数据n:5003
+2019-12-25 18:57:09,332 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4150, 新上传数据m:4149, 已有数据n:1
+2019-12-25 19:00:13,277 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-25 19:00:34,739 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-25 19:00:41,396 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-25 19:01:00,664 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4190, 新上传数据m:4189, 已有数据n:1
+2019-12-26 09:28:18,818 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4893, 新上传数据m:4876, 已有数据n:17
+2019-12-26 09:32:36,104 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-26 09:32:51,805 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:130, 已有数据n:4871
+2019-12-26 09:33:18,208 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:422, 已有数据n:4579
+2019-12-26 09:35:05,106 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-26 09:35:16,678 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-26 09:37:25,984 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:5000, 已有数据n:1
+2019-12-26 09:42:26,314 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4190, 新上传数据m:0, 已有数据n:4190
+2019-12-26 09:42:58,425 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4150, 新上传数据m:0, 已有数据n:4150
+2019-12-26 09:43:10,055 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-26 09:43:18,862 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-26 09:43:29,556 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-26 09:43:55,022 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数8965, 新上传数据m:3963, 已有数据n:5002
+2019-12-26 09:46:42,885 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数2286, 新上传数据m:2285, 已有数据n:1
+2019-12-26 09:50:32,816 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:4294, 已有数据n:707
+2019-12-26 10:11:30,061 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4122, 新上传数据m:4121, 已有数据n:1
+2019-12-26 10:13:46,190 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4523, 新上传数据m:4515, 已有数据n:8
+2019-12-26 10:16:16,834 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:3248, 已有数据n:1753
+2019-12-26 11:03:17,686 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数9423, 新上传数据m:7472, 已有数据n:1951
+2019-12-26 11:35:19,738 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数2626, 新上传数据m:1776, 已有数据n:850
+2019-12-26 11:36:40,606 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数2626, 新上传数据m:0, 已有数据n:2626
+2019-12-26 11:38:24,151 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:3645, 已有数据n:1356
+2019-12-26 11:41:50,795 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4523, 新上传数据m:0, 已有数据n:4523
+2019-12-26 11:45:43,506 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-26 11:45:55,487 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数9123, 新上传数据m:0, 已有数据n:9123
+2019-12-26 11:46:05,643 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数1761, 新上传数据m:1750, 已有数据n:11
+2019-12-26 13:54:05,119 - INFO - excel_push.py - read_excel - 124 - 合计：上传数据总数4523, 新上传数据m:0, 已有数据n:4523
+2019-12-27 16:34:52,452 - INFO - result_push.py - get_count_and_result - 256 - 127.0.0.1:27017: [WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2019-12-27 16:34:52,458 - INFO - result_push.py - zc_data - 415 - unsupported operand type(s) for +: 'int' and 'NoneType'
+2019-12-27 16:34:52,458 - INFO - api.py - data_push - 99 - 'NoneType' object does not support item assignment
+2019-12-31 17:04:51,177 - INFO - api.py - file_update - 145 - [Errno 13] Permission denied: 'D:\\bmd\\bmd_server\\src\\company\\flask_server\\files\\102888\\TEL'
+2019-12-31 17:05:43,812 - INFO - api.py - file_update - 145 - [Errno 13] Permission denied: 'D:\\bmd\\bmd_server\\src\\company\\flask_server\\files\\102888\\TEL'
+2019-12-31 17:06:34,305 - INFO - api.py - file_update - 145 - [Errno 13] Permission denied: 'D:\\bmd\\bmd_server\\src\\company\\flask_server\\files\\102888\\TEL'
+2019-12-31 17:10:32,865 - INFO - api.py - file_update - 145 - [WinError 5] 拒绝访问。: 'D:\\bmd\\bmd_server\\src\\company\\flask_server\\files\\102888\\TEL'
+2019-12-31 17:11:50,111 - INFO - api.py - file_update - 145 - [WinError 5] 拒绝访问。: 'D:\\bmd\\bmd_server\\src\\company\\flask_server\\files\\102888\\TEL'
+2019-12-31 17:12:57,080 - INFO - api.py - file_update - 145 - [WinError 5] 拒绝访问。: 'D:\\bmd\\bmd_server\\src\\company\\flask_server\\files\\102888\\TEL'
+2019-12-31 17:13:50,477 - INFO - api.py - file_update - 145 - [WinError 5] 拒绝访问。: 'D:\\bmd\\bmd_server\\src\\company\\flask_server\\files\\102888\\TEL'
+2019-12-31 17:16:15,654 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2019-12-31 17:16:48,172 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数5001, 新上传数据m:5001, 已有数据n:0
+2020-01-02 14:51:41,573 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2020-01-02 15:02:19,650 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2020-01-02 15:03:48,097 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数5001, 新上传数据m:0, 已有数据n:5001
+2020-01-09 10:09:27,494 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数5001, 新上传数据m:5001, 已有数据n:0
+2020-01-09 10:12:21,186 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数15003, 新上传数据m:15000, 已有数据n:3
+2020-01-09 10:22:52,467 - INFO - excel_push.py - read_excel - 128 - 合计：上传数据总数7287, 新上传数据m:6580, 已有数据n:707

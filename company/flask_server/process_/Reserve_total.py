@@ -59,11 +59,12 @@ class check_reserve(object):
         :return: sucess_lt : 检测过的数据ID
         :return: totalCount : 未检测过的数据总量
         :return: total_lt : 未检测过的数据ID
+        :return: phoneNum : 可推送的数据总数
         """
         try:
             sucessount = 0
             sucess_lt = []
-
+            phoneNum = 0
             totalCount = 0
             total_lt = []
             # 1.查询出数据总表中没有被推送的数据
@@ -82,6 +83,8 @@ class check_reserve(object):
                         _["tel_check"] = tel_type
                         com_reserve.save(_)
                         sucess_lt.append(id)
+                        if _["tel_check"] == "实号":
+                            phoneNum += 1
                     else:
                         # 4.如果数据没有被检测过回写字段tel_type 并存入redis 缓存表
                         _["tel_check"] = "待检测"
@@ -90,13 +93,18 @@ class check_reserve(object):
                         dict_res["_id"] = id
                         dict_res["phone"] = _["companyTel"]
                         totalCount +=1
-                        total_lt.append(id)
+                        dict = {}
+                        dict["ID"] = id
+                        dict["companyName"] = _["companyName"]
+                        dict["companyTel"] = _["companyTel"]
+                        dict["not_push"] = "未检测"
+                        total_lt.append(dict)
                     sucessount += 1
                 else:
                     break
 
 
-            return sucessount,sucess_lt,totalCount,total_lt
+            return sucessount,sucess_lt,totalCount,total_lt,phoneNum
         except Exception as e:
             current_app.logger.info(e)
 
