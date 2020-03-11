@@ -1,3 +1,4 @@
+#encoding=utf-8
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up:
 #   * Rearrange models' order
@@ -117,9 +118,11 @@ class DjangoSession(models.Model):
         managed = False
         db_table = 'django_session'
 
+# 因为可以分批次查询抓取，不做一对多关系处理
 
+# 企查查基本数据模型信息
 class Jbxx(models.Model):
-    companyname = models.CharField(db_column='companyName', primary_key=True, max_length=255)  # Field name made lowercase.
+    companyname = models.CharField(db_column='companyName', primary_key=True, max_length=255)  #
     creditcode = models.CharField(db_column='creditCode', max_length=255, blank=True, null=True)  # Field name made lowercase.
     organizationcode = models.CharField(db_column='organizationCode', max_length=255, blank=True, null=True)  # Field name made lowercase.
     registernum = models.CharField(db_column='registerNum', max_length=255, blank=True, null=True)  # Field name made lowercase.
@@ -144,3 +147,15 @@ class Jbxx(models.Model):
     class Meta:
         managed = True
         db_table = 'jbxx'
+
+# 企查查股东信息数据模型,使用自动更新的时间时需要反向生成一下数据库，不然插入会执行不成功
+class ShareHolder(models.Model):
+    companyname = models.CharField(db_column='companyName', max_length=255, help_text='公司名',null=True)
+    shareholdername = models.CharField(db_column='shareholdername', max_length=255, help_text='股东名称', blank=True, null=True)
+    shareholderatio = models.CharField(db_column='shareholdingratio', max_length=255, help_text='持股比例', blank=True, null=True)
+    shareholdetype = models.CharField(db_column='shareholdetype', max_length=255, help_text='股东类型', blank=True, null=True)
+    subscription = models.CharField(db_column='subscription', max_length=255, help_text='认缴出资额', blank=True, null=True)
+    subscriptiondate = models.CharField(db_column='subscriptiondate', max_length=255, help_text='认缴出资日期', blank=True, null=True)
+    class Meta:
+        managed = True
+        db_table = 'shareholder'

@@ -11,7 +11,8 @@ class sdxy(APIView):
     def post(self,request):
         dict = {}
         key = request.POST.get("companyName","")
-        result_lt = Jbxx.objects.using('sdxydb').filter(companyname=key)
+        # result_lt = Jbxx.objects.using('sdxydb').filter(companyname=key)
+        result_lt = None
         if result_lt:
             item = {}
             item["db"] = "sdxy"
@@ -55,8 +56,8 @@ class sdxy(APIView):
                         jbxx.websource = dicts["webSource"]
                         print(dicts)
                         jbxx.storagetime = dicts["storageTime"]
-                        print("aa")
-                        jbxx.save()
+
+                        jbxx.save(force_update=True)
 
 
 

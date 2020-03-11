@@ -21,63 +21,25 @@ s = requests.session()
 #     resp = s.get(url=url)
 #     resp.encoding = 'utf-8'
 #     print(resp.text.encode("GBK","ignore"))
-
+#
 data = {
-    'companyName' : "顶呱呱"
+    'companyName' : "小鸭顶呱呱有限公司"
 }
-url = 'http://127.0.0.1:8083/index/'
-# url = 'http://127.0.0.1:8083/sdxy/index/'
+# url = 'http://127.0.0.1:8001/index/'
+# url = 'http://10.2.1.57:8005/index/'
+url = 'http://10.2.1.57:8005/sdxy/index/'
+# resp = s.post(url=url,data=data)
+import execjs
+import re
+# url = 'https://www.qixin.com/'
+
 resp = s.post(url=url,data=data)
-#
+resp.encoding ='utf-8'
+# print(resp.text.encode('GBK','ignore'))
+# jstext = "".join(re.findall('<script>(.*?)</script>',resp.text,re.S))
 print(resp.text)
+# print(jstext)
 
-# def ABY():
-#     proxyHost = "http-dyn.abuyun.com"
-#     proxyPort = "9020"
-#
-#     # 代理隧道验证信息
-#     proxyUser = "HQ74H343NC8P83MD"
-#     proxyPass = "72425EBF9493543B"
-#
-#     proxyMeta = "http://%(user)s:%(pass)s@%(host)s:%(port)s" % {
-#         "host": proxyHost,
-#         "port": proxyPort,
-#         "user": proxyUser,
-#         "pass": proxyPass,
-#     }
-#
-#     proxies = {
-#         "http": proxyMeta,
-#         "https": proxyMeta,
-#     }
-#     # print(proxies)
-#     return proxies
-# from lxml.etree import HTML
-# import time
-# import urllib.parse
-# zg = str({"sid": int(time.time()*1000),"updated": int(time.time()*1000),"info": int(time.time()*1000),"superProperty": "{}","platform": "{}","utm": "{}","referrerDomain": ""})
-# zg_ = urllib.parse.quote(zg)
-#
-# s.headers.update({
-#     "Connection": "keep-alive",
-#     "Upgrade-Insecure-Requests": "1",
-#     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36",
-#     "Sec-Fetch-User": "?1",
-#     "Accept-Language": "zh-CN,zh;q=0.9",
-#     # "Cookie": f"zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f={zg_}",
-# })
-# url = "https://www.qichacha.com/search?key=%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4 "
-# #
-# count = 100
-# while count:
-#     proxy = ABY()
-#     resp = s.get(url=url,proxies=proxy)
-#     resp.encoding = resp.apparent_encoding
-#     ETRE = HTML(resp.text)
-#     res = "".join(ETRE.xpath('//tbody[@id="search-result"]/tr[1]/td/a/@href'))
-#     print(res)
-#     print(count)
-#     count -= 1
-
-
-
+import time
+# print(time.strftime("%Y-%m-%d", time.localtime()))
+print(time.localtime())

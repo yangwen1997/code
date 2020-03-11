@@ -9,7 +9,12 @@ import requests
 from lxml.etree import HTML
 from .common import get_log,ABY
 from .XPATH import QCC_XPATH
+
+# from SpiderPlatform.apps.QCC.common import get_log,ABY
+# from SpiderPlatform.apps.QCC.XPATH import QCC_XPATH
+
 log = get_log()
+
 import re
 
 
@@ -32,8 +37,6 @@ class QCC(object):
             "Cookie": "acw_tc=767bf19515782959354945526e28803ea9568107bbd3940ec9684f47ed; acw_sc__v2=5e12e27f9b0b69742f71286e34dd368551cf381b; PHPSESSID=42n7e1ghdi2j5sk8t4bb9dqhu4; zg_did=%7B%22did%22%3A%20%2216f79c4ca61300-0eb25c6ffa5653-6701b35-1fa400-16f79c4ca62952%22%7D; acw_sc__v3=5e12e27fd4397cdddf41ea4de650082424cad62c; UM_distinctid=16f79c4cae72de-0fa4c0a6fba1ac-6701b35-1fa400-16f79c4cae85b2; CNZZDATA1254842228=79363608-1578295144-https%253A%252F%252Fm.qichacha.com%252F%7C1578295144; Hm_lvt_3456bee468c83cc63fb5147f119f1075=1578040179,1578288898,1578295938; zg_de1d1a35bfa24ce29bbf2c7eb17e6c4f=%7B%22sid%22%3A%201578295937637%2C%22updated%22%3A%201578295968430%2C%22info%22%3A%201578295937640%2C%22superProperty%22%3A%20%22%7B%7D%22%2C%22platform%22%3A%20%22%7B%7D%22%2C%22utm%22%3A%20%22%7B%7D%22%2C%22referrerDomain%22%3A%20%22m.qichacha.com%22%7D; Hm_lpvt_3456bee468c83cc63fb5147f119f1075=1578295969"
         })
 
-
-
     def get_req(self,url):
         """
         get请求封装
@@ -43,8 +46,9 @@ class QCC(object):
         count = 3
         while count:
             try:
-                proxies = ABY()
-                resp = self.session.get(url,proxies=proxies,timeout=3)
+                # proxies = ABY()
+                # resp = self.session.get(url,proxies=proxies,timeout=3)
+                resp = self.session.get(url,timeout=3)
                 if resp.status_code == 200:
                     resp.encoding = 'utf-8'
                     return resp.text
@@ -57,7 +61,7 @@ class QCC(object):
 
     def base_get(self):
         """
-        首次请求
+        根据名字进行搜素，获取列表页URL
         :param
         :return:
         """
@@ -77,33 +81,53 @@ class QCC(object):
         except Exception as e:
             print(e)
 
-    def spider_run_jbxx(self):
-        a_lt,etrelt = self.base_get()
+    def judge_company(self,etrelt):
+        """进行对传递的公司名进行判断是否搜索到"""
         index = 0
         companys = None
         for _ in etrelt:
-            name = "".join(_.xpath('.//text()')).strip(" ").replace("\n","")
+            name = "".join(_.xpath('.//text()')).strip(" ").replace("\n", "")
 
             if name == self.keys:
                 companys = name
                 break
             index += 1
-        print(companys)
+        return companys,index
+
+    def spider_run_jbxx(self):
+        """基本信息服务接口"""
+        a_lt,etrelt = self.base_get()
+        companys,index = self.judge_company(etrelt)
+
         if companys:
             url = "https://m.qichacha.com" + a_lt[index]
             resp = self.get_req(url)
-            #
             RUN = QCC_XPATH(resp,self.keys)
             dict = RUN.gsxx()
             return dict
         else:
             return False
 
+    def spider_run_Shareholder(self):
+        """股东信息服务接口"""
+        a_lt, etrelt = self.base_get()
+        companys, index = self.judge_company(etrelt)
+        if companys:
+            url = "https://m.qichacha.com" + a_lt[index]
+            resp = self.get_req(url)
+            RUN = QCC_XPATH(resp, self.keys)
+            dict = RUN.shareholder()
+            if dict:
+                return dict
+            else:
+                return "解析失败"
+        else:
+            return False
 
-# def main():
+
 #
-#     key = "阿里巴巴"
-#     RUN = QCC(keys=key)
-#     resp = RUN.spider_run_jbxx()
-# if __name__ == '__main__':
-#     main()
+# key = "阿里巴巴（中国）网络技术有限公司"
+# RUN = QCC(keys=key)
+# resp = RUN.spider_run_Shareholder()
+# print(resp)
+

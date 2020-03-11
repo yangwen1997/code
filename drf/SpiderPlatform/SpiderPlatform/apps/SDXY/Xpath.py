@@ -4,7 +4,7 @@
 @author : yangwenlong
 @intro : xpath解析规则
 '''
-from datetime import datetime
+import datetime
 class WaterCredit(object):
     """
     水滴信用规则解析类
@@ -60,7 +60,7 @@ class WaterCredit(object):
         item["usedName"] = None
         item["operation"] = None
         item["webSource"] = "https://shuidi.cn/"
-        item["storageTime"] = datetime.now()
+        item["storageTime"] = datetime.date.today()
         filter_item = self.filiters(item)
         return filter_item
 

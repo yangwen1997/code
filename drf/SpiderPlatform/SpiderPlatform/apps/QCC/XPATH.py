@@ -6,8 +6,29 @@
 '''
 import time
 from lxml.etree import HTML
-from datetime import datetime
+import datetime
 
+
+def decoter():
+    """编写接收参数的装饰器，进行结果过滤"""
+    def _decoter(fn):
+        def wrapper(*args,**kwargs):
+            result = fn(*args,**kwargs)
+
+            result_lt = []
+            if result and result != []:
+                for _ in result:
+                    result_item = {}
+                    for k,v in _.items():
+                        if v:
+                            v = v.replace("\n","").replace("\t","").replace(" ","")
+                            result_item[k] = v
+                        else:
+                            result_item[k] = '-'
+                    result_lt.append(result_item)
+                return result_lt
+        return wrapper
+    return _decoter
 
 class QCC_XPATH(object):
 
@@ -46,8 +67,31 @@ class QCC_XPATH(object):
             dict["usedName"] = None
             dict["operation"] = "".join(self.etre.xpath('//div[contains(text(),"经营方式")]/following-sibling::div/text()'))
             dict["websource"] = 'https://qichacha.com'
-            dict["storageTime"] = datetime.now()
+            dict["storageTime"] = datetime.date.today()
             return dict
         except Exception as e:
             print(e)
 
+    @decoter()
+    def shareholder(self):
+        """股东信息"""
+        try:
+            dict_lt = []
+            # 股东名称 持股比例 股东类型 认缴出资额 认缴出资日期
+            data_lt = self.etre.xpath('//div[@id="partners"]//table')
+            if data_lt:
+                companyname = "".join(self.etre.xpath('//div[@class="company-name"]/text()'))
+                for _ in data_lt:
+                    dict = {}
+                    dict['companyname '] = companyname
+                    dict['shareholdername '] = "".join(_.xpath('.//tr[1]//a//text()'))
+                    dict['shareholderatio '] = "".join(_.xpath('.//tr[2]/td[1]/div[2]//text()'))
+                    dict['shareholdetype '] = "".join(_.xpath('.//tr[2]/td[2]/div[2]//text()'))
+                    dict['subscription '] = "".join(_.xpath('.//tr[3]/td[1]/div[2]//text()'))
+                    dict['subscriptiondate '] = "".join(_.xpath('.//tr[3]/td[2]/div[2]//text()'))
+                    dict_lt.append(dict)
+                return dict_lt
+            else:
+                return False
+        except Exception as e:
+            print(e)
