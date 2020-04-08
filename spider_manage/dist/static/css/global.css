@@ -1,0 +1,24 @@
+html,body,div,span,ul,li,ol,a{
+  margin: 0;
+  padding: 0;
+}
+html{
+  background-color: #f2f2f2;
+  color:#666;
+}
+
+a{
+  text-decoration:none;
+}
+body{
+
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #ECF0F5;;
+    display: block;
+    overflow-x: auto;
+    overflow-y: auto;
+    box-sizing: border-box;
+    /*bottom: 0;*/
+}
