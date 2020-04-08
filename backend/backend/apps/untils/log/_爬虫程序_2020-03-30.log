@@ -1,0 +1,6 @@
+2020 09:48:48 spider.py[line:654] INFO 页面为空
+2020 09:48:51 spider.py[line:647] INFO 'str' object has no attribute 'text'
+2020 09:48:53 spider.py[line:654] INFO 页面为空
+2020 10:16:52 spider.py[line:654] INFO 页面为空
+2020 10:17:07 spider.py[line:654] INFO 页面为空
+2020 10:54:06 spider.py[line:647] INFO 'str' object has no attribute 'text'
