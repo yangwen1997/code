@@ -35,35 +35,18 @@ def get_log():
 
 
 def ABY():
-    # proxyHost = "http-dyn.abuyun.com"
-    # proxyPort = "9020"
-    #
-    # # 代理隧道验证信息
-    # proxyUser = "HQ74H343NC8P83MD"
-    # proxyPass = "72425EBF9493543B"
-    #
-    # proxyMeta = "http://%(user)s:%(pass)s@%(host)s:%(port)s" % {
-    #     "host": proxyHost,
-    #     "port": proxyPort,
-    #     "user": proxyUser,
-    #     "pass": proxyPass,
-    # }
-    #
-    # proxies = {
-    #     "http": proxyMeta,
-    #     "https": proxyMeta,
-    # }
-    # print(proxies)
     try:
         IP = STATIC_IP.find()
 
-        ip = choice([_ for _ in IP])["ip_parmas"]
-
+        ip_lt = choice([_ for _ in IP])
+        ip = ip_lt["ip_parmas"]
+        _id = ip_lt["_id"]
         proxies = {
             "http": "http://" + ip,
             "https": "https://" + ip,
         }
-        return proxies
+        return proxies,_id
+
     except Exception as e:
         print(e)
         return None

@@ -1,7 +1,8 @@
 import sys
 import re
 import hashlib
-# sys.path.insert(0,r"D:\bmd\bmd_server")
+import pymongo
+sys.path.insert(0,r"D:\bmd\bmd_server")
 sys.path.insert(0,r"D:\bmd\bmd_server\spider_manage\backend\backend\apps\Crawler_page\sdxy")
 # from spiders.common import get_log,ABY
 from untils.common import get_log,ABY
@@ -12,6 +13,9 @@ from datetime import datetime
 log = get_log()
 
 
+MONGO_DB = pymongo.MongoClient(host='172.16.75.38',port=27017)
+STATIC_IP = MONGO_DB["IP"]["STATIC_IP"]
+
 class basc_Spider(object):
     def __init__(self,key,ApiType=None):
 
@@ -21,7 +25,7 @@ class basc_Spider(object):
         self.s.headers.update({
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
         })
-        self.proxy = ABY()
+        self.proxy,self.ip_id = ABY()
         self.sd_xpath = WaterCredit()
         self.ApiType = ApiType
 
@@ -37,12 +41,17 @@ class basc_Spider(object):
                 # resp = self.s.get(url=url,timeout=10)
                 resp.encoding = resp.apparent_encoding
                 if resp.status_code == 200:
-                    return resp
+                    if "请输入你的验证码" in resp.text:
+
+                        self.proxy,self.ip_id = ABY()
+                        STATIC_IP.update_one({"_id":self.ip_id},{"flag":"1"})
+                    else:
+                        return resp
 
             except Exception as e:
 
                 count += 1
-                self.proxy = ABY()
+                self.proxy,self.ip_id = ABY()
                 if self.proxy or count > 3:
                     return "IP无效"
             # else:
@@ -54,6 +63,14 @@ class basc_Spider(object):
         :return:
         """
         gsxx = self.sd_xpath.gsxx(HTML(resp))
+        return gsxx
+
+    def gdxx(self,resp):
+        """
+        解析股东信息
+        :return:
+        """
+        gsxx = self.sd_xpath.gdxx(HTML(resp))
         return gsxx
 
     def base_first_page(self, items, resp,url):
@@ -99,11 +116,15 @@ class basc_Spider(object):
                     #指定抓取
                     if name[0] == self.keys:
                         items = {}
-                        if self.ApiType == "基本信息查询":
+                        if self.ApiType == "基本信息查询" or self.ApiType == '股东信息查询':
                             url = "https://shuidi.cn" + urls[0]
                             resp = self.get_req(url)
                             resp.encoding = "UTF-8"
-                            self.base_first_page(items, resp.text, url)
+                            if  self.ApiType == "基本信息查询":
+                                self.base_first_page(items, resp.text, url)
+                            elif self.ApiType == '股东信息查询':
+                                gdxx = self.gdxx(resp.text)
+                                items["holderInfo"] = gdxx
                         return items
                     else:
                         log.info("公司名不匹配")
