@@ -15,7 +15,9 @@ BK_DATA_info =  SPIDERDB["YANG"]["BK_DATA_info"]
 def ABY():
     """随机返回代理IP"""
     try:
-        IP = STATIC_IP.find({"flag":"1"})
+        # IP = STATIC_IP.find({"flag":"1"})
+
+        IP = STATIC_IP.find()
         # IP = STATIC_IP.find({"flag":"1"})
 
         ip = choice([_ for _ in IP])

@@ -25,6 +25,7 @@ class MTPC(object):
         :param category ：数据库存入的类别
         :param page     ：页码
         """
+
         self.page = page
         self.data = {
             "cityName": cityName,
@@ -40,7 +41,7 @@ class MTPC(object):
             "originUrl": "https://sh.meituan.com/meishi/",
             "riskLevel": "1",
             "optimusCode": "10",
-            "_token":'eJx1T1tvokAU/i/zCpEZVC6+zQIKoyKyQClNH9DBDgpSGJSWZv/7TtP2ZZNNTvLdTr6c8wE6j4IFgtCEUAb3ogMLgCZwogEZ9Fwkc8NU9dlcmyKkyuD4j6ciGRy6xAaLJ2SqUJ7q8PnTCYXxhKAh1FeA4ExwdSbmc8ETOWB9/8oXisLZpC7K/pZfJ8emVgTnrFTEAf9ZAKKhjkSDwMs35t/Y/+iteERU8PLlKlhBhup8We2GM96GhWJ5nMN9uG9ilntLShrKRhwTmvvOtdpZgY8yvA8l3KR42WX1VjmlU0Uf4mHonGCs3rDxy/ROncEery+Kq0m63fvRb166KQl4mDBKuGnxLLP183KWjZuoomvyOlrrcZWm/uoBOvGlJe6d8MS5eWNSs5YX2moTvu+sNB/9wHOCurVJdEunzIb6mhy2TjzcJZMma6niG1Vyj12LT6i84YgWGlfSPmnd8d2Ya5r2djhhzB9gQ8GfvyrUkhE=',
+            "_token":'',
         },
         self.category = category
         self.s = requests.session()
@@ -49,7 +50,6 @@ class MTPC(object):
         })
         self.proxy,self.ipItem = ABY()
         self.IPcount = 0
-
 
     def get_req(self,url,paramas=None):
         """get请求封装"""
@@ -87,6 +87,8 @@ class MTPC(object):
         etx = execjs.compile(js)
         print(execjs.get().name)
         resp = etx.call("get_token")
+        with open(r'token.txt','w',encoding='utf-8') as fp:
+            fp.write(resp)
         return resp
 
     def get_poiid_list(self):
@@ -96,8 +98,8 @@ class MTPC(object):
             self.data[0]["page"] = str(self.page)
             self.s.headers.update({
                 "Accept": "application/json",
-                # "Referer": f"https://cd.meituan.com/meishi/{self.data[0]['cateId']}"
-                "Referer": f"https://cd.meituan.com/meishi"
+                "Referer": f"https://cd.meituan.com/meishi/{self.data[0]['cateId']}"
+                # "Referer": f"https://cd.meituan.com/meishi"
             })
             url = "https://cd.meituan.com/meishi/api/poi/getPoiList"
             resp = self.get_req(url=url,paramas=self.data[0])
@@ -142,7 +144,7 @@ class MTPC(object):
 
     def to_redis(self):
         """抓取的破poiiD数据存入redis"""
-        result = poiIdDB.find({"flag":"0"})
+        result = poiIdDB.find({"flag":"0","city":"长沙"})
         for _ in result:
             item = _
             red_cli.sadd("PCPId",str(item))
@@ -208,25 +210,21 @@ class MTPC(object):
             self.get_shop_info()
 
 
-# 杭州
-
-areaIdLT = []
 
 def main():
-    # for x in areaIdLT:
-    #     start = MTPC(cateId=x,areaId="0",category="美食",page=1,cityName="长沙")
-    #     start.get_poiid_list()
-    #     print(f"第{x}类抓取完毕")
-    #
-    start = MTPC(cateId="0", areaId="0", category="美食", page=1,cityName="德阳")
-    start.get_shop_info()
-    # print(f"存入redis完成")
+    areaIdLT = ["9634","13722","13735","13893","14832","16087","16088","16682","16683","16684","27097"]
+
+    for _ in areaIdLT:
+        start = MTPC(cateId="0",areaId=_,category="美食",page=1,cityName="成都")
+        start.get_poiid_list()
+        print(f"第{_}类抓取完毕")
+
+    # start = MTPC(cateId="0", areaId="0", category="美食", page=1,cityName="德阳")
+    # start.get_shop_info()
 
 if __name__ == '__main__':
 
     # 多线程
     executor = ThreadPoolExecutor(max_workers=5)
-
-    for i in range(3):
+    for i in range(1):
         executor.submit(main)
-

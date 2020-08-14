@@ -208,6 +208,6 @@ class BK(object):
         log.info("数据存入成功。。。。。。。。。。")
 
 test = BK()
-test.trade_info()
-# test.trade_url_lt(tradeName='蒙昊')
+# test.trade_info()
+test.trade_url_lt(tradeName='蒙昊')
 
