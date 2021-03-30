@@ -67,7 +67,7 @@ prompt-toolkit==3.0.5
 protobuf==3.12.2
 pyee==7.0.2
 PyExecJS==1.5.1
-Pygments==2.6.1
+Pygments==2.7.4
 pymongo==3.10.1
 pyparsing==2.4.7
 pyppeteer==0.2.2
