@@ -53,7 +53,7 @@ nbconvert==5.6.1
 nbformat==5.0.6
 notebook==6.0.3
 numpy==1.19.0
-opencv-contrib-python==4.0.0.21
+opencv-contrib-python==4.1.1.26
 opencv-python==4.2.0.34
 packaging==20.4
 pandas==1.0.4
