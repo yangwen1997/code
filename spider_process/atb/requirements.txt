@@ -21,7 +21,7 @@ opencv-python==4.2.0.34
 parsel==1.6.0
 Pillow==7.1.2
 Protego==0.1.16
-protobuf==3.12.1
+protobuf==3.15.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
