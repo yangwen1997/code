@@ -6,7 +6,7 @@ backcall==0.1.0
 beautifulsoup4==4.9.1
 bleach==1.5.0
 bs4==0.0.1
-certifi==2020.4.5.2
+certifi==2022.12.7
 chardet==3.0.4
 cheroot==8.3.0
 cnocr==1.2.2
